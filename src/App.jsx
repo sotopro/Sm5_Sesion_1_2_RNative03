@@ -4,6 +4,7 @@ import { animals } from './shared/data/animals';
 import Card from './shared/components/card/index'
 import AnimalCard from './shared/components/animal-card';
 import FileNamer from './shared/components/filenamer';
+import AppleForm from './shared/components/appleform';
 
 const App = () => {
 
@@ -37,7 +38,8 @@ const App = () => {
           />
         ))}
       </div> */}
-      <FileNamer />
+      {/* <FileNamer /> */}
+      <AppleForm />
     </div>
   );
 }
