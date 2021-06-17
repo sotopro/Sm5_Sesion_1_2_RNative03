@@ -1,0 +1,9 @@
+.details {
+    border-top: gray solid 1px;
+    margin: 20 0px;
+    padding-bottom: 10px;
+}
+
+.details h4 {
+    text-align: center;
+}

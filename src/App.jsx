@@ -23,7 +23,7 @@ const App = () => {
         ))}
       </div>
       <div className="wrapper">
-        <h1>Animals</h1>
+        {/* <h1>Animals</h1> */}
         {animals.map((animal) => (
           <AnimalCard 
             key={animal.name} 

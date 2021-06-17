@@ -1,21 +1,26 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
+import AnimalDetails from '../animal-details';
+import CardWrapper from '../card-wrapper';
 import './index.css';
 
 // export default function AnimalCard () {
 //     return <h2>Animal</h2>
 // }
-const AnimalCard = ({ name, scientificName, size, diet, additional, showAdditional }) => {
+const AnimalCard = ({ name, size, additional, showAdditional, ...props }) => {
     // const { name, scientificName, size, diet } = props;
     return (
-        <div className="animal-wrapper">
+        <CardWrapper title="Animal">
             <h2>{name}</h2>
-            <h3>{scientificName}</h3>
+            {/* <h3>{scientificName}</h3> */}
             <h4>{size}kg</h4>
-            <div>{diet.join(', ')}.</div>
+            {/* <div>{diet.join(', ')}.</div> */}
+            <AnimalDetails 
+                {...props}
+            />
             <button onClick={() => showAdditional(additional)}>More info</button>
-        </div>
+        </CardWrapper>
     )
 }
 
