@@ -11,7 +11,7 @@ import './index.css';
 const AnimalCard = ({ name, size, additional, showAdditional, ...props }) => {
     // const { name, scientificName, size, diet } = props;
     return (
-        <CardWrapper title="Animal">
+        <CardWrapper title="Animal" details={<em>Mammal</em>}>
             <h2>{name}</h2>
             {/* <h3>{scientificName}</h3> */}
             <h4>{size}kg</h4>

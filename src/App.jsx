@@ -3,6 +3,7 @@ import data from './shared/data/products.json'
 import { animals } from './shared/data/animals';
 import Card from './shared/components/card/index'
 import AnimalCard from './shared/components/animal-card';
+import FileNamer from './shared/components/filenamer';
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const App = () => {
   } 
   return (
     <div className="container">
-      <div className="title">
+      {/* <div className="title">
         <h1>List of Products</h1>
       </div>
       <div>
@@ -23,7 +24,7 @@ const App = () => {
         ))}
       </div>
       <div className="wrapper">
-        {/* <h1>Animals</h1> */}
+        <h1>Animals</h1>
         {animals.map((animal) => (
           <AnimalCard 
             key={animal.name} 
@@ -35,7 +36,8 @@ const App = () => {
             showAdditional={showAdditional}
           />
         ))}
-      </div>
+      </div> */}
+      <FileNamer />
     </div>
   );
 }
