@@ -1,28 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Dashboard from './screens/dashboard';
+
 import Login from './screens/login';
 import Preferences from './screens/preferences';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import useToken from './shared/hook/useToken'
+
 
 const App = () => {
-  const [token, setToken] = useState();
-  if(!token) {
-    return <Login setToken={setToken}/>
-  }
+  const { token, setToken } = useToken();
   return (
     <div className="container">
       <h1>Application</h1>
-      <BrowserRouter>
+      <Router>
         <Switch>
-            <Route path="/dashboard">
-              <Dashboard />
+            <Route exact path="/login">
+              {token ? <Redirect to="/dashboard" /> :  <Login setToken={setToken} />}
             </Route>
-            <Route path="/preferences">
-              <Preferences />
-            </Route>
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/preferences" component={Preferences} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

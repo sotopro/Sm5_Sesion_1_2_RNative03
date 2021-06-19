@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types'
 import  './index.css'
 
 const Login = ({ setToken }) => {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
-
+    let history = useHistory();
     const login = async (credentials) => {
         const response = await fetch('http://localhost:3001/login', {
             method: 'POST',
@@ -27,6 +28,7 @@ const Login = ({ setToken }) => {
         });
         console.log(token)
         setToken(token)
+        history.push("/dashboard");
     }
     return (
         <div className="login-wrapper">
