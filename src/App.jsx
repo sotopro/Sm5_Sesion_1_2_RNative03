@@ -1,45 +1,28 @@
+import React, { useState } from 'react';
 import './App.css';
-import data from './shared/data/products.json'
-import { animals } from './shared/data/animals';
-import Card from './shared/components/card/index'
-import AnimalCard from './shared/components/animal-card';
-import FileNamer from './shared/components/filenamer';
-import AppleForm from './shared/components/appleform';
+import Dashboard from './screens/dashboard';
+import Login from './screens/login';
+import Preferences from './screens/preferences';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 const App = () => {
-
-  const showAdditional = (additional) => {
-    const alertInformation = Object.entries(additional)
-      .map((infomation) => `${infomation[0]}: ${infomation[1]}`)
-      .join('\n');
-      alert(alertInformation)
-  } 
+  const [token, setToken] = useState();
+  if(!token) {
+    return <Login setToken={setToken}/>
+  }
   return (
     <div className="container">
-      {/* <div className="title">
-        <h1>List of Products</h1>
-      </div>
-      <div>
-        {data.products.map((product, index) => (
-          <Card key={`product-${index}`} data={product} />
-        ))}
-      </div>
-      <div className="wrapper">
-        <h1>Animals</h1>
-        {animals.map((animal) => (
-          <AnimalCard 
-            key={animal.name} 
-            name={animal.name}
-            scientificName={animal.scientificName}
-            size={animal.size}
-            diet={animal.diet}
-            additional={animal.additional}
-            showAdditional={showAdditional}
-          />
-        ))}
-      </div> */}
-      {/* <FileNamer /> */}
-      <AppleForm />
+      <h1>Application</h1>
+      <BrowserRouter>
+        <Switch>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/preferences">
+              <Preferences />
+            </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types'
+import  './index.css'
+
+const Login = ({ setToken }) => {
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+
+    const login = async (credentials) => {
+        const response = await fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+        console.log(response)
+
+        return response.json();
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const token = await login({
+            username,
+            password
+        });
+        console.log(token)
+        setToken(token)
+    }
+    return (
+        <div className="login-wrapper">
+            <div>
+                <h2>Please Login in</h2>
+            </div>
+            <div>
+                <form onSubmit={handleSubmit} >
+                    <label>
+                        <p>Username</p>
+                        <input type="text" onChange={e => setUsername(e.target.value)} />
+                    </label>
+                    <label>
+                        <p>Password</p>
+                        <input type="password" onChange={e => setPassword(e.target.value)}/>
+                    </label>
+                    <div>
+                        <button type="submit">Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
+}
+
+export default Login;
