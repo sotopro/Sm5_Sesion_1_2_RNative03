@@ -11,8 +11,8 @@ import useToken from './shared/hook/useToken'
 const App = () => {
   const { token, setToken } = useToken();
   return (
-    <div className="container">
-      <h1>Application</h1>
+    <div className="container-app">
+      {/* <h1>Application</h1> */}
       <Router>
         <Switch>
             <Route exact path="/login">
